@@ -1,0 +1,18 @@
+# Python virtual environment
+venv/
+__pycache__/
+
+# Environment Variables
+.env
+
+# Data Files
+sales-rt.csv
+sales_rt.parquet
+sales.db
+
+# VS Code settings (optional, recommended)
+.vscode/
+
+# OS Files (optional)
+.DS_Store
+Thumbs.db
