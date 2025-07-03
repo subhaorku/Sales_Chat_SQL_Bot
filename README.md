@@ -46,6 +46,11 @@ This project uses large datasets which are not included in GitHub due to file si
 
 ---
 
+## 📊 Project Flowchart
+![image](https://github.com/user-attachments/assets/cff76b3c-d647-42ef-9172-fe2c0409c009)
+
+
+---
 ## ⚙️ Setup Instructions
 
 Follow the steps below to run the chatbot locally:
