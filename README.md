@@ -13,24 +13,21 @@ Sales managers often struggle to explore and interpret sales data efficiently du
 
 ## 🗂️ Project Structure
 ```
-Sales_Chat_bot/
-├── cbot/
-│   ├── app_model_context2.py         # Streamlit app entry point
-│   ├── chatbot_model_context3.py     # Core LLM interface logic
-│   ├── cross_sell_model_context.py   # Context logic for cross-sell suggestions
-│   ├── region_model_context.py       # Regional insights
-│   ├── top_model_context.py          # Top-selling brands/products
-│   ├── region_normalizer.py          # Preprocessing helper
-│   ├── sales_forecaster.py           # Time series forecasting logic
-│   ├── utils_helpers_model_context.py# Shared utilities
-│   ├── sales_rt.csv                  # 🔽 (Download separately)
-│   ├── sales_rt.parquet              # 🔽 (Download separately)
-│   ├── dummy_sales_rt.parquet        # ✅ (Light sample for testing)
-│   ├── metayb-logo.png               # Logo used in sidebar
-│   └── requirements.txt              # Project dependencies
-├── cbot_backup/                      # Backup of important files
-└── README.md                         # Project documentation
-
+Sales_ChatSQL_Bot/
+├── sql/
+│   ├── __pycache__/                    # Python cache
+│   ├── appc.py                         # Streamlit app entry point
+│   ├── region_normalizer.py           # Preprocessing helper
+│   ├── utils_helpers_model_context.py # Shared utilities
+│   ├── sales_rt.csv                   # 🔽 (Download separately)
+│   ├── sales-rt.parquet               # 🔽 (Download separately)
+│   └── sales.db                       # SQLite database
+├── .env                               # Environment variables
+├── .gitignore                         # Git ignored files
+├── README.md                          # Project documentation
+├── requirements.txt                   # Project dependencies
+├── Sales Forecasting and Analysis.doc# Reference document
+└── venv/                              # Virtual environment (ignored in Git)
 ```
 
 
@@ -45,7 +42,7 @@ This project uses large datasets which are not included in GitHub due to file si
 - `sales_rt.csv` (~425MB)
 - `sales_rt.parquet` (~52MB)
 
-> After downloading, place them inside the `cbot/` directory.
+> After downloading, place them inside the `sql/` directory.
 
 ---
 
@@ -56,8 +53,8 @@ Follow the steps below to run the chatbot locally:
 ### 1 Clone the Repository
 
 ```bash
-git clone https://github.com/subhaorku/Sales_Chat-BI_bot.git
-cd Sales_Chat-BI_bot/cbot
+git clone https://github.com/subhaorku/Sales_Chat_SQL_Bot.git
+cd Sales_Chat_SQL_Bot
 ```
 ### 2 Set Up a Virtual Environment
 
@@ -66,33 +63,34 @@ python -m venv venv
 venv\Scripts\activate    # Windows
 # source venv/bin/activate   # Mac/Linux
 
+
 ```
 ### 3 Install Dependencies
 ```bash
 pip install -r requirements.txt
+pip install polars langchain-openai
 ```
 ### 4 Place the Data Files
 ```
-cbot/
+sql/
 ├── sales_rt.csv
 └── sales_rt.parquet
 ```
 
 ### 5 Run the Streamlit Chatbot
-From inside the cbot/ directory:
+From inside the sql/ directory:
 ```bash
-streamlit run app_model_context2.py
+streamlit run appc.py
 ```
 ### 6  Visit: http://localhost:8501
 
 ### Example Prompts
-"Show trend for INDOMIE PULL in NORTH 1"
 
-"Forecast sales for DANO next 3 weeks"
+"Show top 3 SKUs by Order Quantity"
 
-"What are the top 3 brands in EAST last month?"
+"Plot sales for INDOMIE PULL in NORTH 1 for February 2025"
 
-"Compare sales of COLGATE and DANO in SOUTH"
+"Show top 3 sales Person by revenue"
 
 ### Some Results
 ![image](https://github.com/user-attachments/assets/911d4947-38cf-4316-875d-977a55750a7a)
